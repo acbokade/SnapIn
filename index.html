@@ -1,63 +1,24 @@
-<html>
-  <head>
-  SnapIn Test
-  </head>
-  <body>
-    <style type='text/css'>
-      .embeddedServiceHelpButton .helpButton .uiButton {
-        background-color: #005290;
-        font-family: "Arial", sans-serif;
-      }
-      .embeddedServiceHelpButton .helpButton .uiButton:focus {
-        outline: 1px solid #005290;
-      }
-    </style>
+<head>
+</head>
+<body>
+  <script src=”https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest/lightning/lightning.out.js”></script&gt;
+  <script>
+    $Lightning.use(“runtime_appointmentbooking:lightningOutGuest”, // name of the Lightning app
+      function() {
+      $Lightning.createComponent(
+      “lightning:flow”, // top-level component of your app
+      { }, // attributes to set on the component when created
+      “lightningLocator”, // the DOM location to insert the component
+        function(cmp) {
+        console.log(‘Hi from callback’);// callback when component is created and active on the page
+        cmp.startFlow(‘runtime_appointmentbooking__Guest_Flow‘);
+        }
+      );
+    }, ‘https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest; // Community endpoint
+    );
+  </script>
 
-    <script type='text/javascript'>
-      var initESW = function(gslbBaseURL) {
-        embedded_svc.settings.displayHelpButton = true; //Or false
-        embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-        //embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-        //embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-        //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-        // Settings for Field Service
-
-        embedded_svc.settings.enabledFeatures = ['FieldService'];
-        embedded_svc.settings.entryFeature = 'FieldService';
-
-        embedded_svc.settings.useCustomAuthentication = false;
-        embedded_svc.settings.loginClientId = '3MVG9AOp4kbriZOK4mxieR2rTMh2RYvfcl8jQs9UjFeGka09.JGhMxMfyqlBNi1n2OfZwITwoaMx7KRg9n2I0';
-        embedded_svc.settings.loginRedirectURL = 'https://acbokade.github.io/SnapIn.github.io/snapin-callback.html';
-        embedded_svc.settings.loginTargetQuerySelector = #salesforce-login'';
-        embedded_svc.settings.authenticationStartLabel = 'Authenticated!';
-
-        embedded_svc.init(
-          'https://marvel.my.localhost.sfdcdev.salesforce.com:6101',
-          'https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest',
-          gslbBaseURL,
-          '00Dxx0000006GZj',
-          'SnapIn_Test',
-          {
-
-          }
-        );
-      };
-
-      if (!window.embedded_svc) {
-        var s = document.createElement('script');
-        s.setAttribute('src', 'https://marvel.my.localhost.sfdcdev.salesforce.com:6101/embeddedservice/5.0/esw.min.js');
-        s.onload = function() {
-          initESW(null);
-        };
-        document.body.appendChild(s);
-      } else {
-        initESW('https://service.force.com');
-      }
-    </script>
-    <div id="salesforce-login"></div>
-  <body/>
-</html>
+  <div id=”lightningLocator”>
+    <p>Lightning Component mentioned in the Script is invoked from here</p>
+  </div>
+</body>
