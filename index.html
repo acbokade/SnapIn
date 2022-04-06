@@ -4,17 +4,17 @@
   <script src=”https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest/lightning/lightning.out.js”></script>
   <script>
     $Lightning.use(“runtime_appointmentbooking:lightningOutGuest”,
-      function() {
-      $Lightning.createComponent(
-      “lightning:flow”, // top-level component of your app
-      { }, // attributes to set on the component when created
-      “lightningLocator”, // the DOM location to insert the component
-        function(cmp) {
-        console.log(‘Hi from callback’);// callback when component is created and active on the page
-        cmp.startFlow(‘runtime_appointmentbooking__Guest_Flow‘);
-        }
-      );
-    }, 'https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest' // Community endpoint
+        function() {
+          $Lightning.createComponent(
+            “lightning:flow”, // top-level component of your app
+            { }, // attributes to set on the component when created
+            “lightningLocator”, // the DOM location to insert the component
+            function(cmp) {
+              console.log(‘Hi from callback’);
+              cmp.startFlow(‘runtime_appointmentbooking__Guest_Flow‘);
+            }
+        );
+      }, 'https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest'
     );
   </script>
 
