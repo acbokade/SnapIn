@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<head><title>lightningOut</title></head>
-<body>
-  <base href="https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest/">
-  <script src=”lightning/lightning.out.js”></script>
-  <script>
-    $Lightning.use(“runtime_appointmentbooking:lightningOutGuest”,
+<html>
+<script src="https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest/lightning/lightning.out.js"></script>
+<script>
+    $Lightning.use("runtime_appointmentbooking:lightningOutGuest",    // name of the Lightning app
         function() {
-          $Lightning.createComponent(
-            “lightning:flow”, // top-level component of your app
-            { }, // attributes to set on the component when created
-            “lightningLocator”, // the DOM location to insert the component
-            function(cmp) {
-              console.log(‘Hi from callback’);
-              cmp.startFlow(‘Guest_Clone‘);
-            }
-        );
-      }, 'https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest'
+            $Lightning.createComponent(
+               //"runtime_appointmentbooking:flowReview", {},
+                "lightning:flow", // top-level component of your app
+                { },                  // attributes to set on the component when created
+                "lightningLocator",   // the DOM location to insert the component
+                function(cmp) {
+                    console.log('Hi from callback');// callback when component is created and active on the page
+                    cmp.startFlow('Guest_Clone');
+                }
+            );
+        }, 'https://marvel.my.localhost.sfdcdev.site.com:6101/snapinTest'  // Community endpoint
     );
-  </script>
-
-  <div id=”lightningLocator”>
-    <p>Lightning Component mentioned in the Script is invoked from here</p>
-  </div>
-</body>
+</script>
+<div id="lightningLocator">
+  <p></p>
+</div>
+</html>
