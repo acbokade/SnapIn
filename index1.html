@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head><title>lightningOut</title></head>
+<body>
+  <base href="https://contractor.stmfa.stm.force.com/guest/">
+  <script src=”lightning/lightning.out.js”></script>
+  <script>
+    $Lightning.use(“runtime_appointmentbooking:lightningOutGuest”,
+        function() {
+          $Lightning.createComponent(
+            “lightning:flow”, // top-level component of your app
+            { }, // attributes to set on the component when created
+            “lightningLocator”, // the DOM location to insert the component
+            function(cmp) {
+              console.log(‘Hi from callback’);
+              cmp.startFlow(‘Guest_New_Clone‘);
+            }
+        );
+      }, 'ttps://contractor.stmfa.stm.force.com/guest'
+    );
+  </script>
+
+  <div id=”lightningLocator”>
+    <p>Lightning Component mentioned in the Script is invoked from here</p>
+  </div>
+</body>
