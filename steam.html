@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<script src="https://contractor.stmfa.stm.force.com/contractorOutbound/lightning/lightning.out.js"></script>
+<script>
+    $Lightning.use("runtime_appointmentbooking:lightningOutGuest",    // name of the Lightning app
+        function() {
+            $Lightning.createComponent(
+               //"runtime_appointmentbooking:flowReview", {},
+                "lightning:flow", // top-level component of your app
+                { },                  // attributes to set on the component when created
+                "lightningLocator",   // the DOM location to insert the component
+                function(cmp) {
+                    console.log('Hi from callback');// callback when component is created and active on the page
+                    cmp.startFlow('Guest_New_Clone');
+                }
+            );
+        }, 'https://contractor.stmfa.stm.force.com/contractorOutbound'  // Community endpoint
+    );
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div id="lightningLocator">
+  <p></p>
+</div>
+</html>
