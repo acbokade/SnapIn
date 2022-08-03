@@ -3,21 +3,19 @@
 <html> 
   <script src="https://240rs.lightning.localhost.sfdcdev.force.com:6101/lightning/lightning.out.js"></script>
 <script>
-    $Lightning.use("runtime_appointmentbooking:lightningOutGuest",    // name of the Lightning app
-        function() {
-            $Lightning.createComponent(
-               //"runtime_appointmentbooking:flowReview", {},
-                "lightning:flow", // top-level component of your app
-                { },                  // attributes to set on the component when created
-                "lightningLocator",   // the DOM location to insert the component
-                function(cmp) {
-                    console.log('Hi from callback');// callback when component is created and active on the page
-                    cmp.startFlow('Guest_Clone');
-                }
-            );
-        }, 'https://240rs.lightning.localhost.sfdcdev.force.com:6101/customerAccountPortal'  // Community endpoint
-    );
-</script>
+          //var url = "<%= ouathLightningURL %>";
+          //var token = "Bearer "+"<%= oauthtoken %>";
+          //console.log(token);
+            $Lightning.use("runtime_appointmentbooking:lightningOutGuest", function() {
+                  $Lightning.createComponent("lightning:flow", {},
+                     "lightningLocator",
+                      function(cmp) {
+                         // do some stuff
+                         cmp.startFlow("Guest_Clone");
+			  console.log('Component created, do something cool here');
+                      });
+            }, "https://240rs.lightning.localhost.sfdcdev.force.com:6101/customerAccountPortal");
+  </script>
 <meta name=“viewport” content=“width=device-width, initial-scale=1”>
 <div id="lightningLocator">
   <p></p>
