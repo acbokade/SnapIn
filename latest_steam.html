@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html> 
+  <script src="https://contractor.stmfa.stm.force.com/guest/lightning/lightning.out.js"></script>
+<script>
+          //var url = "<%= ouathLightningURL %>";
+          //var token = "Bearer "+"<%= oauthtoken %>";
+          //console.log(token);
+            $Lightning.use("runtime_appointmentbooking:lightningOutGuest", function() {
+                  $Lightning.createComponent("lightning:flow", {},
+                     "lightningLocator",
+                      function(cmp) {
+                         // do some stuff
+                         cmp.startFlow("Guest_New_Clone");
+			  console.log('Component created, do something cool here');
+                      });
+            }, "https://contractor.stmfa.stm.force.com/guest");
+  </script>
+<!-- <meta name=“viewport” content=“width=device-width, initial-scale=1”> -->
+<div id="lightningLocator">
+  <p>Test</p>
+</div>
+</html>
